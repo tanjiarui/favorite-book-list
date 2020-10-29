@@ -1,0 +1,57 @@
+<% include ../partials/header.ejs %>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <h3>Favourite Books List </h3>
+          <a href="books/add" class="btn btn-primary" role="button">
+            <i class="fas fa-plus-circle"></i> Add a Book
+          </a>
+          <br>
+          <div class="main-content">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center align-middle">Title</th>
+                  <th class="text-center align-middle">Price</th>
+                  <th class="text-center align-middle">Author</th>
+                  <th class="text-center align-middle">Genre</th>
+                  <th class="text-center align-middle"></th>
+                  <th class="text-center align-middle"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Template Row -->
+                <% for (let count = 0; count < books.length; count++) { %>
+                <tr>
+                  <td class="text-center align-middle"><%= books[count].title %></td>
+                  <td class="text-center align-middle">$<%= books[count].price %></td>
+                  <td class="text-center align-middle"><%= books[count].author %></td>
+                  <td class="text-center align-middle"><%= books[count].genre %></td>
+
+                  <td class="text-center align-middle">
+                    <a href="books/edit/<%= books[count]._id %>" class="btn btn-primary btn-sm"
+                      style="margin-bottom: 0;">
+                      <i class="fas fa-pencil-alt"></i>Edit
+                    </a>
+                  </td>
+
+                  <td class="text-center align-middle">
+                    <a href="books/delete/<%= books[count]._id %>" class="btn btn-danger btn-sm"
+                      style="margin-bottom: 0;">
+                      <i class="fas fa-trash-alt"></i>Delete
+                    </a>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+           <div class="col-md-offset-1 col-md-10 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+<% include ../partials/footer.ejs %>
